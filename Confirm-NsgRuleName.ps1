@@ -26,7 +26,7 @@ function Confirm-NsgRuleName {
             Get-AzNetworkSecurityRuleConfig |
             Where-Object { 
                 $_.Direction -eq $Direction -and 
-                ($RuleNamePattern -eq $null -or $_.Name -like $RuleNamePattern) 
+                ($null -eq $RuleNamePattern -or $_.Name -like $RuleNamePattern) 
             } |
             Select-Object Name, Priority, Access, Protocol, Direction, SourceAddressPrefix, DestinationAddressPrefix, SourcePortRange, DestinationPortRange
 
